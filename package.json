@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@appsflyer/fe-components-core": "^5.0.11",
+    "@appsflyer/fe-ui-core": "^4.0.1",
+    "@appsflyer/fe-ui-theme": "^4.0.1",
+    "@appsflyer/node-af-build-utils": "^8.3.3",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
