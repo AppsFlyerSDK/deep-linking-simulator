@@ -8,6 +8,7 @@
     "@appsflyer/fe-ui-core": "^4.0.1",
     "@appsflyer/fe-ui-theme": "^4.0.1",
     "@appsflyer/node-af-build-utils": "^8.3.3",
+    "@fullstory/browser": "^1.4.9",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.4",
