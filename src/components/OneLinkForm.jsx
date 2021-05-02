@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import querystring from 'query-string'
 
 import FormLabel from '@material-ui/core/FormLabel';
 import { Typography } from '@appsflyer/fe-ui-core';
 
 import { ToggleButtonGroup, ToggleButton } from '@appsflyer/fe-ui-core';
 import Apple from '@material-ui/icons/Apple';
+import { ToggleBanana, TogglePeach } from '../assets/index';
 
 import { Select } from '@appsflyer/fe-ui-core';
 import Button from '@material-ui/core/Button';
-
-import Slider from '@material-ui/core/Slider';
 
 const Wrapper = styled.div`
   background: #FFFFFF;
@@ -21,18 +21,37 @@ const Wrapper = styled.div`
   padding: 24px;
 `
 
-export default function OneLinkForm() {
-  const [selectedPage, setSelectedPage] = useState('');
-  const [fruitAmount, setFruitAmount] = useState(null);
-  const [iOSRedirect, setIOSRedirect] = useState(null);
-  const [androidRedirect, setAndroidRedirect] = useState(null);
-  const [webRedirect, setWebRedirect] = useState(null);
+export default function OneLinkForm({
+  selectedPage,
+  setSelectedPage,
+  fruitAmount,
+  setFruitAmount,
+  iOSRedirect,
+  setIOSRedirect,
+  androidRedirect,
+  setAndroidRedirect,
+  webRedirect,
+  setWebRedirect,
+  setOneLinkURL
+}) {
 
-  console.log(selectedPage)
-  console.log(fruitAmount)
-  console.log(iOSRedirect)
-  console.log(androidRedirect)
-  console.log(webRedirect)
+  const generateURL = () => {
+    const url = "https://onelink-sim.onelink.me/coiD";
+    const pid = "QR_code";
+
+    const params = {
+      'deep_link_value': selectedPage || undefined,
+      'deep_link_sub1': fruitAmount?.value || undefined,
+      'af_ios_url': iOSRedirect.label === 'Web Page' ? iOSRedirect.value : undefined,
+      'af_android_url': androidRedirect.label === 'Web Page' ? androidRedirect.value : undefined,
+      'af_web_dp': webRedirect.value || undefined
+    }
+
+    const query = querystring.stringify(params);
+    const finalURL = `${url}?pid=${pid}&${query}`
+
+    setOneLinkURL(finalURL)
+  }
 
   return (
     <Wrapper>
@@ -50,17 +69,17 @@ export default function OneLinkForm() {
         <ToggleButton
           value="apples"
           label="Apples"
-          icon={<Apple fontSize="small" />}
+          icon={<Apple />}
         />
         <ToggleButton
           value="bananas"
           label="Bananas"
-          icon={<Apple fontSize="small" />}
+          icon={<ToggleBanana isSelected={selectedPage === 'bananas'}/>}
         />
         <ToggleButton
           value="peaches"
           label="Peaches"
-          icon={<Apple fontSize="small" />}
+          icon={<TogglePeach  isSelected={selectedPage === 'peaches'}/>}
         />
       </ToggleButtonGroup>
 
@@ -78,17 +97,9 @@ export default function OneLinkForm() {
         size="fullWidth"
       />
 
-      {/* testing this out */}
-      <Slider
-        size="small"
-        defaultValue={Math.floor(Math.random() * 50)}
-        min={1}
-        max={100}
-        // valueLabelDisplay="on"
-      />
-
       <Typography variant="body1" weight="bold" color="primary">Redirections</Typography>
       
+       
       <Select
         options={[
           { value: 'appStore', label: 'App Store' },
@@ -123,7 +134,13 @@ export default function OneLinkForm() {
         size="fullWidth"
       />
 
-      <Button variant="contained" size="medium" color="primary" fullWidth="true">
+      <Button 
+        variant="contained" 
+        size="medium" 
+        color="primary" 
+        fullWidth
+        onClick={generateURL}
+      >
         Create Link
       </Button>
 
