@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import {HeaderAfLogo, HeaderOlLogo, BannerMobile, BannerDesktop} from '../assets/index';
+import {HeaderAfLogo, HeaderOlLogo, BannerDesktop} from '../assets/index'; //add BannerMobile later
 import { Typography } from '@appsflyer/fe-ui-core';
 
 
