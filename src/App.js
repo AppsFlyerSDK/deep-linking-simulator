@@ -7,6 +7,9 @@ import OneLinkForm from './components/OneLinkForm';
 import QROutput from './components/QROutput';
 
 import styled from 'styled-components'
+import * as FullStory from '@fullstory/browser';
+
+FullStory.init({ orgId: 'ZKPBZ' });
 
 const BodyWrapper = styled.div`
   display: flex;
