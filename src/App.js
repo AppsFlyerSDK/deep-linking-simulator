@@ -1,38 +1,54 @@
-import React, {useState} from 'react'
-import { ThemeProvider } from '@appsflyer/fe-ui-theme';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import React, { useState, useRef } from "react"
+import { ThemeProvider } from "@appsflyer/fe-ui-theme"
+import CssBaseline from "@material-ui/core/CssBaseline"
 
-import Header from './components/Header';
-import OneLinkForm from './components/OneLinkForm';
-import QROutput from './components/QROutput';
+import Header from "./components/Header"
+import OneLinkForm from "./components/OneLinkForm"
+import QROutput from "./components/QROutput"
 
-import styled from 'styled-components'
-import * as FullStory from '@fullstory/browser';
+import styled from "styled-components"
+import * as FullStory from "@fullstory/browser"
 
-FullStory.init({ orgId: 'ZKPBZ' });
+FullStory.init({ orgId: "ZKPBZ" })
 
 const BodyWrapper = styled.div`
   display: flex;
+  flex-direction: column;
 
-  background: #F2F2F2;
+  background: #f2f2f2;
 
-  padding: 24px;
+  padding: 16px;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    padding: 24px;
+  }
 `
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState('');
-  const [fruitAmount, setFruitAmount] = useState(null);
-  const [iOSRedirect, setIOSRedirect] = useState({ value: 'appStore', label: 'App Store' });
-  const [androidRedirect, setAndroidRedirect] = useState({ value: 'playStore', label: 'Play Store' });
-  const [webRedirect, setWebRedirect] = useState({ value: 'webPage', label: 'Web Page' });
-  const [oneLinkURL, setOneLinkURL] = useState('')
+  const [selectedPage, setSelectedPage] = useState("apples")
+  const [fruitAmount, setFruitAmount] = useState(null)
+  const [iOSRedirect, setIOSRedirect] = useState({
+    value: "appStore",
+    label: "App Store",
+  })
+  const [androidRedirect, setAndroidRedirect] = useState({
+    value: "playStore",
+    label: "Play Store",
+  })
+  const [webRedirect, setWebRedirect] = useState({
+    value: `https://chayev.github.io/appsflyer-smartbanner-fruits/`,
+    label: "Web Page",
+  })
+  const [oneLinkURL, setOneLinkURL] = useState("")
+  const qrCodeRef = useRef(null)
 
   return (
     <ThemeProvider>
-     <CssBaseline />
+      <CssBaseline />
       <Header />
       <BodyWrapper>
-        <OneLinkForm 
+        <OneLinkForm
           selectedPage={selectedPage}
           setSelectedPage={setSelectedPage}
           fruitAmount={fruitAmount}
@@ -44,13 +60,12 @@ function App() {
           webRedirect={webRedirect}
           setWebRedirect={setWebRedirect}
           setOneLinkURL={setOneLinkURL}
+          qrCodeRef={qrCodeRef}
         />
-        <QROutput 
-          oneLinkURL={oneLinkURL}
-        />
+        <QROutput oneLinkURL={oneLinkURL} qrCodeRef={qrCodeRef} />
       </BodyWrapper>
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App

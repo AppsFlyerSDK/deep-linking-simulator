@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import QRCode from "qrcode.react";
+import React from "react"
+import styled from "styled-components"
+import QRCode from "qrcode.react"
 
-import { EmptyState, Typography, CopyToClipboard } from "@appsflyer/fe-ui-core";
-import Link from "@material-ui/core/Link";
-import {OutputEmptyState} from '../assets/index';
-
+import { EmptyState, Typography, CopyToClipboard } from "@appsflyer/fe-ui-core"
+import Link from "@material-ui/core/Link"
+import { OutputEmptyState } from "./svg-components"
+import { makeStyles } from "@material-ui/core/styles"
 
 const Wrapper = styled.div`
   background: #ffffff;
@@ -16,33 +16,92 @@ const Wrapper = styled.div`
 
   width: 100%;
 
-  margin-left: 24px;
   padding: 24px;
-`;
+  margin-top: 16px;
 
-export default function QROutput({ oneLinkURL }) {
+  ${(props) => props.isEmptyState && "display: none;"}
+
+  @media only screen and (min-width: 768px) {
+    margin-left: 24px;
+    margin-top: 0px;
+    ${(props) =>
+      props.isEmptyState && "display: flex; justify-content: center;"}
+  }
+`
+
+const QRCodeStyled = styled(QRCode)`
+  display: block;
+  margin auto;
+`
+
+const useStyles = makeStyles((theme) => ({
+  innerForm: {
+    marginBottom: "14px",
+  },
+  outerForm: {
+    marginBottom: "6px",
+  },
+  paddingLeft: {
+    paddingLeft: "4px",
+  },
+}))
+
+export default function QROutput({ oneLinkURL, qrCodeRef }) {
+  const classes = useStyles()
+
   return (
-    <Wrapper>
+    <Wrapper isEmptyState={!oneLinkURL}>
       {!oneLinkURL && (
         <>
-        <OutputEmptyState />
-        <EmptyState
-          title="Your OneLink hasn't been created yet"
-          subtitle="Make your redirection and deep linking selections. Then click Create link to create your OneLink URL and QR code."
-        />
+          <EmptyState
+            title={
+              <div>
+                <OutputEmptyState />
+
+                <Typography variant="h1">
+                  Your OneLink hasn't been created yet
+                </Typography>
+              </div>
+            }
+            subtitle={
+              <div>
+                <Typography variant="body1">
+                  Make your redirection and deep linking selections.
+                  <br />
+                  Then click <b>Create Link</b> to create your OneLink URL and
+                  QR code.
+                </Typography>
+              </div>
+            }
+          />
         </>
       )}
 
       {oneLinkURL && (
         <>
-          <Typography variant="body1" weight="bold" color="primary">
+          <Typography
+            variant="body1"
+            weight="bold"
+            color="primary"
+            className={classes.innerForm}
+          >
             OneLink URL and QR code
+          </Typography>
+
+          <Typography
+            variant="body2"
+            weight="bold"
+            className={classes.outerForm}
+          >
+            Click the link on your mobile device or desktop, or scan the QR code
+            to simulate OneLink redirection behavior.
           </Typography>
 
           <CopyToClipboard
             id="1"
             size="fullWidth"
             value={oneLinkURL}
+            className={classes.outerForm}
             // value={
             //   <Link
             //     underline="always"
@@ -60,12 +119,23 @@ export default function QROutput({ oneLinkURL }) {
             target="_blank"
             rel="noreferrer"
           >
-            <Typography>{oneLinkURL}</Typography>
+            <Typography>Click Me</Typography>
           </Link>
 
-          <QRCode value={oneLinkURL} />
+          {/* <CopyToClipboardButton
+            // buttonProps=""
+            confirmationPosition="top"
+            confirmationText="Copied successfully!"
+            // onCopy={undefined}
+            text={oneLinkURL}
+            withConfirmation
+          /> */}
+
+          <div ref={qrCodeRef}>
+            <QRCodeStyled value={oneLinkURL} size={290} includeMargin={true} />
+          </div>
         </>
       )}
     </Wrapper>
-  );
+  )
 }
