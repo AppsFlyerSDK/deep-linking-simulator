@@ -12,7 +12,7 @@
   resolved "https://artifactory.appsflyer.com:443/artifactory/api/npm/npm/@appsflyer/fe-service-translate/-/fe-service-translate-2.1.40.tgz#349a44f368267ddef84ab88a4fb0de93767dede0"
   integrity sha1-NJpE82gmfd74SriKT7Dek3Z97eA=
 
-"@appsflyer/fe-ui-core@^4.0.1":
+"@appsflyer/fe-ui-core@^4.1.0":
   version "4.1.0"
   resolved "https://artifactory.appsflyer.com:443/artifactory/api/npm/npm/@appsflyer/fe-ui-core/-/@appsflyer/fe-ui-core-4.1.0.tgz#56fd072dbe48eb2964b2d9d7edb25a8a8213c755"
   integrity sha1-Vv0HLb5I6ylkstnX7bJaioITx1U=
