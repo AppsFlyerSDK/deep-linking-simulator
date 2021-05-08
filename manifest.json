@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "OneLink simulator",
+  "name": "OneLink simulator - experience deep linking behavior",
   "icons": [
     {
       "src": "favicon.ico",
