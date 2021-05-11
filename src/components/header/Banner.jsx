@@ -1,39 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 
-import {
-  HeaderAfLogo,
-  HeaderOlLogo,
-  BannerDesktop,
-  BannerMobile,
-} from "./svg-components"
+import { BannerDesktop, BannerMobile } from "../svg-components"
 import { Typography } from "@appsflyer/fe-ui-core"
 
-const Wrapper = styled.div`
-  position: sticky;
-  top: 0;
-  z-index: 10;
-`
-
-const TopBar = styled.div`
-  height: 52px;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-
-  background: #414a55;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-`
-
-const Divider = styled.div`
-  width: 15px;
-  height: 0px;
-
-  border: 1px solid #ffffff;
-  transform: rotate(90deg);
-`
-
-const Banner = styled.div`
+const BannerWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,10 +32,6 @@ const HeaderTitleWrapper = styled(Typography)`
   }
 `
 
-const OlLogo = styled(HeaderOlLogo)`
-  margin-bottom: 7px;
-`
-
 const BannerMobileStyled = styled(BannerMobile)`
   margin-left: auto;
 
@@ -81,19 +48,12 @@ const BannerDesktopStyled = styled(BannerDesktop)`
   }
 `
 
-export default function Header() {
+export default function Banner() {
   return (
-    <Wrapper>
-      <TopBar>
-        <HeaderAfLogo />
-        <Divider />
-        <OlLogo />
-      </TopBar>
-      <Banner>
-        <HeaderTitleWrapper>OneLink simulator</HeaderTitleWrapper>
-        <BannerMobileStyled />
-        <BannerDesktopStyled />
-      </Banner>
-    </Wrapper>
+    <BannerWrapper>
+      <HeaderTitleWrapper>OneLink simulator</HeaderTitleWrapper>
+      <BannerMobileStyled />
+      <BannerDesktopStyled />
+    </BannerWrapper>
   )
 }
