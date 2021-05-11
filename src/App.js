@@ -2,7 +2,8 @@ import React, { useState, useRef } from "react"
 import { ThemeProvider } from "@appsflyer/fe-ui-theme"
 import CssBaseline from "@material-ui/core/CssBaseline"
 
-import Header from "./components/Header"
+import TopBar from "./components/header/TopBar"
+import Banner from "./components/header/Banner"
 import OneLinkForm from "./components/OneLinkForm"
 import QROutput from "./components/QROutput"
 
@@ -46,7 +47,10 @@ function App() {
   return (
     <ThemeProvider>
       <CssBaseline />
-      <Header />
+
+      <TopBar />
+      <Banner />
+
       <BodyWrapper>
         <OneLinkForm
           selectedPage={selectedPage}
