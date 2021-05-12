@@ -72,12 +72,12 @@ export default function OneLinkForm({
 
     if (isMobile) {
       qrCodeRef.current?.scrollIntoView({ behavior: "smooth" })
-      console.log("isMobile")
     }
   }
 
   const classes = useStyles()
 
+  // const webURL = `https://www.appsflyer.com/webDemo/`
   const webURL = `https://chayev.github.io/appsflyer-smartbanner-fruits/`
   // const webURL = `https://chayev.github.io/appsflyer-smartbanner-fruits/products/${selectedPage}`
 

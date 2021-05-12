@@ -14,6 +14,8 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.8",
+    "copy-to-clipboard": "^3.3.1",
+    "prop-types": "^15.7.2",
     "qrcode.react": "^1.0.1",
     "query-string": "^7.0.0",
     "react": "^17.0.2",
