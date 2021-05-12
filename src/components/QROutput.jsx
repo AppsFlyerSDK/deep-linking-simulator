@@ -2,10 +2,12 @@ import React from "react"
 import styled from "styled-components"
 import QRCode from "qrcode.react"
 
-import { EmptyState, Typography, CopyToClipboard } from "@appsflyer/fe-ui-core"
+import { EmptyState, Typography } from "@appsflyer/fe-ui-core"
 import Link from "@material-ui/core/Link"
 import { OutputEmptyState } from "./svg-components"
 import { makeStyles } from "@material-ui/core/styles"
+
+import CopyToClipboardWithLink from "./CopyToClipboardWithLink/CopyToClipboardWithLink"
 
 const Wrapper = styled.div`
   background: #ffffff;
@@ -49,10 +51,27 @@ const useStyles = makeStyles((theme) => ({
   paddingLeft: {
     paddingLeft: "4px",
   },
+  linkPadding: {
+    padding: "8px 0px 8px 8px",
+    wordBreak: "break-all",
+  },
 }))
 
 export default function QROutput({ oneLinkURL, qrCodeRef }) {
   const classes = useStyles()
+
+  const myLink = () => {
+    return (
+      <Link
+        underline="always"
+        href={oneLinkURL}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Typography className={classes.linkPadding}>{oneLinkURL}</Typography>
+      </Link>
+    )
+  }
 
   return (
     <Wrapper isEmptyState={!oneLinkURL}>
@@ -102,21 +121,12 @@ export default function QROutput({ oneLinkURL, qrCodeRef }) {
             to simulate OneLink redirection behavior.
           </Typography>
 
-          <CopyToClipboard
+          <CopyToClipboardWithLink
             id="1"
             size="fullWidth"
+            link={myLink}
             value={oneLinkURL}
-            className={classes.outerForm}
           />
-
-          <Link
-            underline="always"
-            href={oneLinkURL}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Typography>Click Me</Typography>
-          </Link>
 
           <QRCodeWrapper ref={qrCodeRef}>
             <QRCode value={oneLinkURL} size={290} includeMargin={true} />

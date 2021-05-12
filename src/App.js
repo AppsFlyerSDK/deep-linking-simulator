@@ -39,6 +39,7 @@ function App() {
   })
   const [webRedirect, setWebRedirect] = useState({
     value: `https://chayev.github.io/appsflyer-smartbanner-fruits/`,
+    // value: `https://www.appsflyer.com/web-Demo/`,
     label: "Web Page",
   })
   const [oneLinkURL, setOneLinkURL] = useState("")
