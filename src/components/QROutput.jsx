@@ -29,9 +29,14 @@ const Wrapper = styled.div`
   }
 `
 
-const QRCodeStyled = styled(QRCode)`
-  display: block;
-  margin auto;
+const QRCodeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    height: 352px; //Note: review this if anything else on the page changes
+  }
 `
 
 const useStyles = makeStyles((theme) => ({
@@ -131,9 +136,9 @@ export default function QROutput({ oneLinkURL, qrCodeRef }) {
             withConfirmation
           /> */}
 
-          <div ref={qrCodeRef}>
-            <QRCodeStyled value={oneLinkURL} size={290} includeMargin={true} />
-          </div>
+          <QRCodeWrapper ref={qrCodeRef}>
+            <QRCode value={oneLinkURL} size={290} includeMargin={true} />
+          </QRCodeWrapper>
         </>
       )}
     </Wrapper>
