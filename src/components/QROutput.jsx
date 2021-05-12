@@ -107,15 +107,6 @@ export default function QROutput({ oneLinkURL, qrCodeRef }) {
             size="fullWidth"
             value={oneLinkURL}
             className={classes.outerForm}
-            // value={
-            //   <Link
-            //     underline="always"
-            //     href="https://onelink-sim.onelink.me/coiD"
-            //     target="_blank"
-            //     rel="noreferrer">
-            //     <Typography>https://onelink-sim.onelink.me/coiD</Typography>
-            //   </Link>
-            // }
           />
 
           <Link
@@ -126,15 +117,6 @@ export default function QROutput({ oneLinkURL, qrCodeRef }) {
           >
             <Typography>Click Me</Typography>
           </Link>
-
-          {/* <CopyToClipboardButton
-            // buttonProps=""
-            confirmationPosition="top"
-            confirmationText="Copied successfully!"
-            // onCopy={undefined}
-            text={oneLinkURL}
-            withConfirmation
-          /> */}
 
           <QRCodeWrapper ref={qrCodeRef}>
             <QRCode value={oneLinkURL} size={290} includeMargin={true} />

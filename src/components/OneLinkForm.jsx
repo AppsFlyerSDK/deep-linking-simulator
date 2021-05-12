@@ -105,7 +105,7 @@ export default function OneLinkForm({
       <ToggleButtonGroup
         size="small"
         value={selectedPage}
-        onChange={(event, selectedPage) => setSelectedPage(selectedPage)}
+        onChange={(_, selectedPage) => setSelectedPage(selectedPage)}
         exclusive
         className={classes.innerForm}
       >
