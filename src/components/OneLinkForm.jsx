@@ -6,8 +6,7 @@ import FormLabel from "@material-ui/core/FormLabel"
 import { Typography } from "@appsflyer/fe-ui-core"
 
 import { ToggleButtonGroup, ToggleButton } from "@appsflyer/fe-ui-core"
-import Apple from "@material-ui/icons/Apple"
-import { ToggleBanana, TogglePeach } from "./svg-components"
+import { ToggleBanana, TogglePeach, ToggleApple } from "./svg-components"
 
 import { Select } from "@appsflyer/fe-ui-core"
 import Button from "@material-ui/core/Button"
@@ -109,16 +108,20 @@ export default function OneLinkForm({
         exclusive
         className={classes.innerForm}
       >
-        <ToggleButton value="apples" label="Apples" icon={<Apple />} />
-        <ToggleButton
-          value="bananas"
-          label="Bananas"
-          icon={<ToggleBanana isSelected={selectedPage === "bananas"} />}
-        />
         <ToggleButton
           value="peaches"
           label="Peaches"
           icon={<TogglePeach isSelected={selectedPage === "peaches"} />}
+        />
+        <ToggleButton
+          value="apples"
+          label="Apples"
+          icon={<ToggleApple isSelected={selectedPage === "apples"} />}
+        />
+        <ToggleButton
+          value="bananas"
+          label="Bananas"
+          icon={<ToggleBanana isSelected={selectedPage === "bananas"} />}
         />
       </ToggleButtonGroup>
 

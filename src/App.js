@@ -27,7 +27,7 @@ const BodyWrapper = styled.div`
 `
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState("apples")
+  const [selectedPage, setSelectedPage] = useState("peaches")
   const [fruitAmount, setFruitAmount] = useState(null)
   const [iOSRedirect, setIOSRedirect] = useState({
     value: "appStore",
