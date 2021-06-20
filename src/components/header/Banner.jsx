@@ -51,7 +51,7 @@ const BannerDesktopStyled = styled(BannerDesktop)`
 export default function Banner() {
   return (
     <BannerWrapper>
-      <HeaderTitleWrapper>OneLink simulator</HeaderTitleWrapper>
+      <HeaderTitleWrapper>Deep Linking Simulator</HeaderTitleWrapper>
       <BannerMobileStyled />
       <BannerDesktopStyled />
     </BannerWrapper>
