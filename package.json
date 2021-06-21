@@ -1,7 +1,7 @@
 {
-  "name": "onelink-simulator",
+  "name": "deep-linking-simulator",
   "version": "0.1.0",
-  "homepage": "https://chayev.github.io/onelink-simulator",
+  "homepage": "https://chayev.github.io/deep-linking-simulator",
   "private": true,
   "dependencies": {
     "@appsflyer/fe-components-core": "^5.0.11",
