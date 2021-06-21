@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/onelink-simulator/static/js/main.c18e27df.chunk.js",
-    "main.js.map": "/onelink-simulator/static/js/main.c18e27df.chunk.js.map",
-    "runtime-main.js": "/onelink-simulator/static/js/runtime-main.5c1c9725.js",
-    "runtime-main.js.map": "/onelink-simulator/static/js/runtime-main.5c1c9725.js.map",
-    "static/js/2.ca100d9e.chunk.js": "/onelink-simulator/static/js/2.ca100d9e.chunk.js",
-    "static/js/2.ca100d9e.chunk.js.map": "/onelink-simulator/static/js/2.ca100d9e.chunk.js.map",
-    "static/js/3.4db5b9cd.chunk.js": "/onelink-simulator/static/js/3.4db5b9cd.chunk.js",
-    "static/js/3.4db5b9cd.chunk.js.map": "/onelink-simulator/static/js/3.4db5b9cd.chunk.js.map",
-    "index.html": "/onelink-simulator/index.html",
-    "static/js/2.ca100d9e.chunk.js.LICENSE.txt": "/onelink-simulator/static/js/2.ca100d9e.chunk.js.LICENSE.txt"
+    "main.js": "/deep-linking-simulator/static/js/main.3b911b13.chunk.js",
+    "main.js.map": "/deep-linking-simulator/static/js/main.3b911b13.chunk.js.map",
+    "runtime-main.js": "/deep-linking-simulator/static/js/runtime-main.4116377f.js",
+    "runtime-main.js.map": "/deep-linking-simulator/static/js/runtime-main.4116377f.js.map",
+    "static/js/2.f8038d3a.chunk.js": "/deep-linking-simulator/static/js/2.f8038d3a.chunk.js",
+    "static/js/2.f8038d3a.chunk.js.map": "/deep-linking-simulator/static/js/2.f8038d3a.chunk.js.map",
+    "static/js/3.3d6c5685.chunk.js": "/deep-linking-simulator/static/js/3.3d6c5685.chunk.js",
+    "static/js/3.3d6c5685.chunk.js.map": "/deep-linking-simulator/static/js/3.3d6c5685.chunk.js.map",
+    "index.html": "/deep-linking-simulator/index.html",
+    "static/js/2.f8038d3a.chunk.js.LICENSE.txt": "/deep-linking-simulator/static/js/2.f8038d3a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.5c1c9725.js",
-    "static/js/2.ca100d9e.chunk.js",
-    "static/js/main.c18e27df.chunk.js"
+    "static/js/runtime-main.4116377f.js",
+    "static/js/2.f8038d3a.chunk.js",
+    "static/js/main.3b911b13.chunk.js"
   ]
 }
