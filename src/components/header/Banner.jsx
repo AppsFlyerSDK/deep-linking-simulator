@@ -18,24 +18,21 @@ const BannerWrapper = styled.div`
   }
 `
 
-const HeaderTitleWrapper = styled(Typography)`
+const HeaderTitle = styled(Typography)`
+  font-weight: bold;
+`
+
+const TitleContainer = styled.div`
   width: 200px;
   color: #ffffff;
 
-  padding-left: 16px;
+  padding-left: 20px;
 
   @media only screen and (min-width: 768px) {
-    width: 360px;
+    width: 225px;
     padding-left: 0px;
   }
-
-  // @media only screen and (min-width: 560px) {
-  //   padding-left: 0px;
-  //   width: 350px;
-  // }
 `
-
-const TitleContainer = styled.div``
 
 const BannerMobileStyled = styled(BannerMobile)`
   margin-left: auto;
@@ -57,12 +54,8 @@ export default function Banner() {
   return (
     <BannerWrapper>
       <TitleContainer>
-        <HeaderTitleWrapper variant="h4">
-          Deep Linking Simulator
-        </HeaderTitleWrapper>
-        <HeaderTitleWrapper variant="subtitle1">
-          Powered by OneLink
-        </HeaderTitleWrapper>
+        <HeaderTitle variant="h4">Deep Linking Simulator</HeaderTitle>
+        <Typography variant="subtitle1">Powered by OneLink</Typography>
       </TitleContainer>
       <BannerMobileStyled />
       <BannerDesktopStyled />
