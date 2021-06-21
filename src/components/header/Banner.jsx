@@ -18,16 +18,18 @@ const BannerWrapper = styled.div`
   }
 `
 
-const HeaderTitleWrapper = styled(Typography)`
-  width: 185px;
-  font-size: 45px;
-  line-height: 50px;
-  letter-spacing: -0.015em;
+const HeaderTitle = styled(Typography)`
+  font-weight: bold;
+`
+
+const TitleContainer = styled.div`
+  width: 200px;
   color: #ffffff;
 
-  padding-left: 16px;
+  padding-left: 20px;
 
   @media only screen and (min-width: 768px) {
+    width: 225px;
     padding-left: 0px;
   }
 `
@@ -51,7 +53,10 @@ const BannerDesktopStyled = styled(BannerDesktop)`
 export default function Banner() {
   return (
     <BannerWrapper>
-      <HeaderTitleWrapper>OneLink simulator</HeaderTitleWrapper>
+      <TitleContainer>
+        <HeaderTitle variant="h4">Deep Linking Simulator</HeaderTitle>
+        <Typography variant="subtitle1">Powered by OneLink</Typography>
+      </TitleContainer>
       <BannerMobileStyled />
       <BannerDesktopStyled />
     </BannerWrapper>
