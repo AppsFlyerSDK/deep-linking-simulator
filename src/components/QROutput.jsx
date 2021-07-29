@@ -41,6 +41,14 @@ const QRCodeWrapper = styled.div`
   }
 `
 
+const EmptyStateWrapper = styled.div`
+  display: flex;
+  min-height: 250px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+`
+
 const useStyles = makeStyles((theme) => ({
   innerForm: {
     marginBottom: "14px",
@@ -54,6 +62,9 @@ const useStyles = makeStyles((theme) => ({
   linkPadding: {
     padding: "8px 0px 8px 8px",
     wordBreak: "break-all",
+  },
+  emptyState: {
+    width: "auto",
   },
 }))
 
@@ -76,18 +87,19 @@ export default function QROutput({ oneLinkURL, qrCodeRef }) {
   return (
     <Wrapper isEmptyState={!oneLinkURL}>
       {!oneLinkURL && (
-        <>
+        <EmptyStateWrapper>
           <EmptyState
+            classes={{ root: classes.emptyState }}
+            variant="noSearchResults"
+            icon={OutputEmptyState}
             title={
               <div>
-                <OutputEmptyState />
-
                 <Typography variant="h1">
                   Your OneLink hasn't been created yet
                 </Typography>
               </div>
             }
-            subtitle={
+            content={
               <div>
                 <Typography variant="body1">
                   Make your redirection and deep linking selections.
@@ -98,7 +110,7 @@ export default function QROutput({ oneLinkURL, qrCodeRef }) {
               </div>
             }
           />
-        </>
+        </EmptyStateWrapper>
       )}
 
       {oneLinkURL && (
