@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/deep-linking-simulator/static/js/main.4c8de53f.chunk.js",
-    "main.js.map": "/deep-linking-simulator/static/js/main.4c8de53f.chunk.js.map",
+    "main.js": "/deep-linking-simulator/static/js/main.4c189b11.chunk.js",
+    "main.js.map": "/deep-linking-simulator/static/js/main.4c189b11.chunk.js.map",
     "runtime-main.js": "/deep-linking-simulator/static/js/runtime-main.a3ac30cd.js",
     "runtime-main.js.map": "/deep-linking-simulator/static/js/runtime-main.a3ac30cd.js.map",
-    "static/js/2.a0649b5f.chunk.js": "/deep-linking-simulator/static/js/2.a0649b5f.chunk.js",
-    "static/js/2.a0649b5f.chunk.js.map": "/deep-linking-simulator/static/js/2.a0649b5f.chunk.js.map",
+    "static/js/2.eff8ac34.chunk.js": "/deep-linking-simulator/static/js/2.eff8ac34.chunk.js",
+    "static/js/2.eff8ac34.chunk.js.map": "/deep-linking-simulator/static/js/2.eff8ac34.chunk.js.map",
     "static/js/3.a5eb1211.chunk.js": "/deep-linking-simulator/static/js/3.a5eb1211.chunk.js",
     "static/js/3.a5eb1211.chunk.js.map": "/deep-linking-simulator/static/js/3.a5eb1211.chunk.js.map",
     "index.html": "/deep-linking-simulator/index.html",
-    "static/js/2.a0649b5f.chunk.js.LICENSE.txt": "/deep-linking-simulator/static/js/2.a0649b5f.chunk.js.LICENSE.txt"
+    "static/js/2.eff8ac34.chunk.js.LICENSE.txt": "/deep-linking-simulator/static/js/2.eff8ac34.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a3ac30cd.js",
-    "static/js/2.a0649b5f.chunk.js",
-    "static/js/main.4c8de53f.chunk.js"
+    "static/js/2.eff8ac34.chunk.js",
+    "static/js/main.4c189b11.chunk.js"
   ]
 }
