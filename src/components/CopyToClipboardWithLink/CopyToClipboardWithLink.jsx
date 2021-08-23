@@ -17,6 +17,7 @@ const CopyToClipboardWithLink = ({
   afterCopyText,
   multiline = false,
   useStyles = defaultStyles,
+  onCopy,
   link,
   ...rest
 }) => {
@@ -31,8 +32,9 @@ const CopyToClipboardWithLink = ({
   }
 
   const handleClick = () => {
-    copyText()
-    setTooltipContent(afterCopyText)
+    copyText();
+    setTooltipContent(afterCopyText);
+    onCopy && onCopy();
   }
 
   const onTooltipTransitionExited = () => {
@@ -95,6 +97,7 @@ CopyToClipboardWithLink.propTypes = {
   afterCopyText: PropTypes.string,
   useStyles: PropTypes.func,
   multiline: PropTypes.bool,
+  onCopy: PropTypes.func
 }
 
 CopyToClipboardWithLink.defaultProps = {

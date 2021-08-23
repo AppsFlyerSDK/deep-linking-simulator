@@ -68,6 +68,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+const onCopy = () => {
+  console.log("Copied!")
+};
+
 export default function QROutput({ oneLinkURL, qrCodeRef }) {
   const classes = useStyles()
 
@@ -138,6 +142,7 @@ export default function QROutput({ oneLinkURL, qrCodeRef }) {
             size="fullWidth"
             link={myLink}
             value={oneLinkURL}
+            onCopy={onCopy}
           />
 
           <QRCodeWrapper ref={qrCodeRef}>
