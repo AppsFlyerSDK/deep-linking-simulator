@@ -8,7 +8,13 @@ import OneLinkForm from "./components/OneLinkForm"
 import QROutput from "./components/QROutput"
 
 import styled from "styled-components"
+
 import * as FullStory from "@fullstory/browser"
+
+import ReactGA from "react-ga"
+
+ReactGA.initialize("G-8XT2W0HRNY")
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 FullStory.init({ orgId: "ZKPBZ" })
 
