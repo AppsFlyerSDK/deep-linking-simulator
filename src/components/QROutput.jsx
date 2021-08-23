@@ -68,11 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const onCopy = () => {
-  console.log("Copied!")
-};
-
-export default function QROutput({ oneLinkURL, qrCodeRef }) {
+export default function QROutput({ oneLinkURL, qrCodeRef, logEventCopy }) {
   const classes = useStyles()
 
   const myLink = () => {
@@ -87,6 +83,10 @@ export default function QROutput({ oneLinkURL, qrCodeRef }) {
       </Link>
     )
   }
+
+  const onCopy = () => {
+    logEventCopy()
+  };
 
   return (
     <Wrapper isEmptyState={!oneLinkURL}>

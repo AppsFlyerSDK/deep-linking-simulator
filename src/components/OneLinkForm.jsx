@@ -46,6 +46,7 @@ export default function OneLinkForm({
   setWebRedirect,
   setOneLinkURL,
   qrCodeRef,
+  logEventLinkGen,
 }) {
   const generateURL = async () => {
     const url = "https://onelink-sim.onelink.me/coiD"
@@ -72,6 +73,8 @@ export default function OneLinkForm({
     if (isMobile) {
       qrCodeRef.current?.scrollIntoView({ behavior: "smooth" })
     }
+
+    logEventLinkGen()
   }
 
   const classes = useStyles()

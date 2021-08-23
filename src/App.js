@@ -50,6 +50,21 @@ function App() {
   })
   const [oneLinkURL, setOneLinkURL] = useState("")
   const qrCodeRef = useRef(null)
+  const logEventLinkGen = () => {
+    ReactGA.event({
+      category: 'User',
+      action: 'Link Generated',
+      label: selectedPage,
+      value: fruitAmount
+    });
+  }
+  const logEventCopy = () => {
+    ReactGA.event({
+      category: 'User',
+      action: 'Copied Link',
+      label: oneLinkURL
+    });
+  }
 
   return (
     <ThemeProvider>
@@ -72,8 +87,13 @@ function App() {
           setWebRedirect={setWebRedirect}
           setOneLinkURL={setOneLinkURL}
           qrCodeRef={qrCodeRef}
+          logEventLinkGen={logEventLinkGen}
         />
-        <QROutput oneLinkURL={oneLinkURL} qrCodeRef={qrCodeRef} />
+        <QROutput 
+          oneLinkURL={oneLinkURL} 
+          qrCodeRef={qrCodeRef} 
+          logEventCopy={logEventCopy}
+        />
       </BodyWrapper>
     </ThemeProvider>
   )
