@@ -13,7 +13,10 @@ import * as FullStory from "@fullstory/browser"
 
 import ReactGA from "react-ga"
 
-ReactGA.initialize("G-8XT2W0HRNY")
+ReactGA.initialize("UA-206076064-1", {
+  // debug: true,
+})
+
 ReactGA.pageview(window.location.pathname + window.location.search)
 
 FullStory.init({ orgId: "ZKPBZ" })
@@ -34,7 +37,7 @@ const BodyWrapper = styled.div`
 
 function App() {
   const [selectedPage, setSelectedPage] = useState("peaches")
-  const [fruitAmount, setFruitAmount] = useState(null)
+  const [fruitAmount, setFruitAmount] = useState(0)
   const [iOSRedirect, setIOSRedirect] = useState({
     value: "appStore",
     label: "App Store",
@@ -55,7 +58,7 @@ function App() {
       category: 'User',
       action: 'Link Generated',
       label: selectedPage,
-      value: fruitAmount
+      value: parseInt(fruitAmount.value)
     });
   }
   const logEventCopy = () => {
