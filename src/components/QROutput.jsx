@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import QRCode from "qrcode.react"
-import { EmptyState, Typography } from "@appsflyer/fe-ui-core"
+import { EmptyState, Typography, Alert } from "@appsflyer/fe-ui-core"
 import Link from "@material-ui/core/Link"
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -155,6 +155,10 @@ export default function QROutput({
           <QRCodeWrapper ref={qrCodeRef}>
             <QRCode value={oneLinkURL} size={290} includeMargin={true} />
           </QRCodeWrapper>
+
+          <Alert severity="info">
+            We’ve created 3 links that will lead to the same page. Each link looks different, but it’s the same.
+          </Alert>
         </>
       )}
     </Wrapper>
