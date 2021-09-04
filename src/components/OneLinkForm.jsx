@@ -5,6 +5,8 @@ import { ToggleButtonGroup, ToggleButton, Typography, Select } from "@appsflyer/
 import FormLabel from "@material-ui/core/FormLabel"
 import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/core/styles"
+import Tooltip from '@material-ui/core/Tooltip';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 import { ToggleBanana, TogglePeach, ToggleApple } from "./svg-components"
 import { gaTag } from "../utilities/analytics"
@@ -18,6 +20,14 @@ const Wrapper = styled.div`
   padding: 24px;
 `
 
+const StyledTooltip = styled(Tooltip)`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: inline-block;
+  }
+`
+
 const useStyles = makeStyles((theme) => ({
   innerForm: {
     marginBottom: "14px",
@@ -27,6 +37,12 @@ const useStyles = makeStyles((theme) => ({
   },
   paddingLeft: {
     paddingLeft: "4px",
+  },
+  helpIcon: {
+    color: theme.palette.grey[500],
+    '&:hover': {
+      color: theme.palette.grey[600]
+    }
   },
 }))
 
@@ -84,6 +100,22 @@ export default function OneLinkForm({
   const webURL = `https://chayev.github.io/appsflyer-smartbanner-fruits/`
   // const webURL = `https://chayev.github.io/appsflyer-smartbanner-fruits/products/${selectedPage}`
 
+  const TooltipContentDeepLinkValue = () => (
+    <div>
+      <Typography variant="body2">
+        The specific page displays in the link as the 'deep_link_value' parameter.
+      </Typography>
+    </div>
+  )
+  
+  const TooltipContentDeepLinkSub1 = () => (
+    <div>
+      <Typography variant="body2">
+        The amount of fruit displays in the link as the 'deep_link_sub1' parameter. 
+      </Typography>
+    </div>
+  )
+
   return (
     <Wrapper>
       <Typography
@@ -101,7 +133,18 @@ export default function OneLinkForm({
           color="textPrimary"
           className={classes.paddingLeft}
         >
-          Open a specific page in the app
+          Open a specific page in the app 
+          <StyledTooltip
+            placement="right"
+            interactive
+            classes={{ tooltip: 'AFTooltip-light' }}
+            title={<TooltipContentDeepLinkValue />}>
+            <InfoOutlinedIcon
+              className={classes.helpIcon}
+              fontSize="small"
+              color="action"
+            />
+          </StyledTooltip>
         </Typography>
       </FormLabel>
 
@@ -137,7 +180,22 @@ export default function OneLinkForm({
           { value: "25", label: "25" },
           { value: "99", label: "99" },
         ]}
-        label="Display the amount of fruit"
+        label={
+          <>
+            Display the amount of fruit
+            <StyledTooltip
+              placement="right"
+              interactive
+              classes={{ tooltip: 'AFTooltip-light' }}
+              title={<TooltipContentDeepLinkSub1 />}>
+              <InfoOutlinedIcon
+                className={classes.helpIcon}
+                fontSize="small"
+                color="action"
+              />
+            </StyledTooltip>
+          </>
+        }
         value={fruitAmount}
         onChange={setFruitAmount}
         size="fullWidth"
