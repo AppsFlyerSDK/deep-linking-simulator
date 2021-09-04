@@ -1,16 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import querystring from "query-string"
-
+import { ToggleButtonGroup, ToggleButton, Typography, Select } from "@appsflyer/fe-ui-core"
 import FormLabel from "@material-ui/core/FormLabel"
-import { Typography } from "@appsflyer/fe-ui-core"
-
-import { ToggleButtonGroup, ToggleButton } from "@appsflyer/fe-ui-core"
-import { ToggleBanana, TogglePeach, ToggleApple } from "./svg-components"
-
-import { Select } from "@appsflyer/fe-ui-core"
 import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/core/styles"
+
+import { ToggleBanana, TogglePeach, ToggleApple } from "./svg-components"
+import { gaTag } from "../utilities/analytics"
 
 const Wrapper = styled.div`
   background: #ffffff;
@@ -46,7 +43,6 @@ export default function OneLinkForm({
   setWebRedirect,
   setOneLinkURL,
   qrCodeRef,
-  logEventLinkGen,
 }) {
   const generateURL = async () => {
     const url = "https://onelink-sim.onelink.me/coiD"
@@ -74,7 +70,12 @@ export default function OneLinkForm({
       qrCodeRef.current?.scrollIntoView({ behavior: "smooth" })
     }
 
-    logEventLinkGen()
+    gaTag.event({
+      category: 'User',
+      action: 'Link Generated',
+      label: selectedPage,
+      value: parseInt(fruitAmount.value)
+    });
   }
 
   const classes = useStyles()

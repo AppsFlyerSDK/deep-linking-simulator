@@ -1,23 +1,16 @@
 import React, { useState, useRef } from "react"
 import { ThemeProvider } from "@appsflyer/fe-ui-theme"
 import CssBaseline from "@material-ui/core/CssBaseline"
+import styled from "styled-components"
+import * as FullStory from "@fullstory/browser"
 
 import TopBar from "./components/header/TopBar"
 import Banner from "./components/header/Banner"
 import OneLinkForm from "./components/OneLinkForm"
 import QROutput from "./components/QROutput"
+import { gaTag } from "./utilities/analytics"
 
-import styled from "styled-components"
-
-import * as FullStory from "@fullstory/browser"
-
-import ReactGA from "react-ga"
-
-ReactGA.initialize("UA-206076064-1", {
-  // debug: true,
-})
-
-ReactGA.pageview(window.location.pathname + window.location.search)
+gaTag.pageview(window.location.pathname + window.location.search)
 
 FullStory.init({ orgId: "ZKPBZ" })
 
@@ -53,21 +46,6 @@ function App() {
   })
   const [oneLinkURL, setOneLinkURL] = useState("")
   const qrCodeRef = useRef(null)
-  const logEventLinkGen = () => {
-    ReactGA.event({
-      category: 'User',
-      action: 'Link Generated',
-      label: selectedPage,
-      value: parseInt(fruitAmount.value)
-    });
-  }
-  const logEventCopy = () => {
-    ReactGA.event({
-      category: 'User',
-      action: 'Copied Link',
-      label: oneLinkURL
-    });
-  }
 
   return (
     <ThemeProvider>
@@ -90,12 +68,10 @@ function App() {
           setWebRedirect={setWebRedirect}
           setOneLinkURL={setOneLinkURL}
           qrCodeRef={qrCodeRef}
-          logEventLinkGen={logEventLinkGen}
         />
         <QROutput 
           oneLinkURL={oneLinkURL} 
           qrCodeRef={qrCodeRef} 
-          logEventCopy={logEventCopy}
         />
       </BodyWrapper>
     </ThemeProvider>
