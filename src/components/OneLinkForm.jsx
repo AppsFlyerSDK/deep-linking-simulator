@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import querystring from "query-string"
 import { ToggleButtonGroup, ToggleButton, Typography, Select } from "@appsflyer/fe-ui-core"
@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/core/styles"
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+
+import axios from 'axios';
 
 import { ToggleBanana, TogglePeach, ToggleApple } from "./svg-components"
 import { gaTag } from "../utilities/analytics"
@@ -58,8 +60,17 @@ export default function OneLinkForm({
   webRedirect,
   setWebRedirect,
   setOneLinkURL,
+  setShortLinkURL,
+  setBrandedLinkURL,
   qrCodeRef,
 }) {
+  const [shortLinkID, setShortLinkID] = useState("")
+
+  const generateLinks = async () => {
+    generateURL()
+    generateShortURL()
+  }
+
   const generateURL = async () => {
     const url = "https://onelink-sim.onelink.me/coiD"
     const pid = "QR_code"
@@ -92,6 +103,43 @@ export default function OneLinkForm({
       label: selectedPage,
       value: parseInt(fruitAmount.value)
     });
+  }
+
+  const generateShortURL = async () => {    
+    const options = {
+      data: JSON.stringify({
+        // 'brand_domain': "killtest.cache.afsdktests.com",
+        'ttl': '1d',
+        'data': {
+          pid: 'my_media_source_SMS', 
+          c: 'my_campaign_Michael',
+          deep_link_value: selectedPage || undefined,
+          deep_link_sub1: fruitAmount?.value || undefined,
+          af_ios_url: iOSRedirect.label === "Web Page" ? iOSRedirect.value : undefined,
+          af_android_url: androidRedirect.label === "Web Page" ? androidRedirect.value : undefined,
+          af_web_dp: webRedirect.value || undefined,
+        }
+      }),
+      shortLinkID: shortLinkID,
+      oneLinkID: "coiD",
+    }
+
+    const endpoint = "http://onelinkapi.chayev.com/links" //UPDATE THIS!
+
+    axios.post(endpoint, JSON.stringify(options)).then(res => {
+      let data = res.data
+      let oneLinkID = options.oneLinkID
+      if(data.includes(oneLinkID)) {
+        setShortLinkURL(data)
+        let shortLinkIDVal = data.slice(-(data.length - (data.indexOf(oneLinkID) + oneLinkID.length + 1)))
+        setShortLinkID(shortLinkIDVal)
+
+        var url = new URL(data)
+        url.hostname = "killtest.cache.afsdktests.com"
+        setBrandedLinkURL(url.href)
+      }
+    })
+
   }
 
   const classes = useStyles()
@@ -262,7 +310,7 @@ export default function OneLinkForm({
         size="medium"
         color="primary"
         fullWidth
-        onClick={generateURL}
+        onClick={generateLinks}
       >
         Create Link
       </Button>

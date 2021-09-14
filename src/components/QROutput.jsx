@@ -70,11 +70,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function QROutput({ 
   oneLinkURL,
+  shortLinkURL,
+  brandedLinkURL,
   qrCodeRef,
 }) {
   const classes = useStyles()
 
-  const myLink = () => {
+  const myLongLink = () => {
     return (
       <Link
         underline="always"
@@ -87,11 +89,53 @@ export default function QROutput({
     )
   }
 
-  const onCopy = () => {
+  const myShortLink = () => {
+    return (
+      <Link
+        underline="always"
+        href={shortLinkURL}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Typography className={classes.linkPadding}>{shortLinkURL}</Typography>
+      </Link>
+    )
+  }
+  
+  const myBrandedLink = () => {
+    return (
+      <Link
+        underline="always"
+        href={brandedLinkURL}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Typography className={classes.linkPadding}>{brandedLinkURL}</Typography>
+      </Link>
+    )
+  }
+
+  const onCopyLongURL = () => {
     gaTag.event({
       category: 'User',
-      action: 'Copied Link',
+      action: 'Copied Long Link',
       label: oneLinkURL
+    });
+  };
+
+  const onCopyShortURL = () => {
+    gaTag.event({
+      category: 'User',
+      action: 'Copied Short Link',
+      label: shortLinkURL
+    });
+  };
+
+  const onCopyBrandedURL = () => {
+    gaTag.event({
+      category: 'User',
+      action: 'Copied Branded Link',
+      label: brandedLinkURL
     });
   };
 
@@ -147,13 +191,37 @@ export default function QROutput({
           <CopyToClipboardWithLink
             id="1"
             size="fullWidth"
-            link={myLink}
+            link={myLongLink}
             value={oneLinkURL}
-            onCopy={onCopy}
+            onCopy={onCopyLongURL}
           />
 
           <QRCodeWrapper ref={qrCodeRef}>
             <QRCode value={oneLinkURL} size={290} includeMargin={true} />
+          </QRCodeWrapper>
+
+          <CopyToClipboardWithLink
+            id="2"
+            size="fullWidth"
+            link={myShortLink}
+            value={shortLinkURL}
+            onCopy={onCopyShortURL}
+          />
+
+          <QRCodeWrapper>
+            <QRCode value={shortLinkURL} size={290} includeMargin={true} />
+          </QRCodeWrapper>
+
+          <CopyToClipboardWithLink
+            id="3"
+            size="fullWidth"
+            link={myBrandedLink}
+            value={shortLinkURL}
+            onCopy={onCopyBrandedURL}
+          />
+
+          <QRCodeWrapper>
+            <QRCode value={brandedLinkURL} size={290} includeMargin={true} />
           </QRCodeWrapper>
 
           <Alert severity="info">

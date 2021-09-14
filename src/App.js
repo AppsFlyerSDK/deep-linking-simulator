@@ -45,6 +45,8 @@ function App() {
     label: "Web Page",
   })
   const [oneLinkURL, setOneLinkURL] = useState("")
+  const [shortLinkURL, setShortLinkURL] = useState("")
+  const [brandedLinkURL, setBrandedLinkURL] = useState("")
   const qrCodeRef = useRef(null)
 
   return (
@@ -67,10 +69,14 @@ function App() {
           webRedirect={webRedirect}
           setWebRedirect={setWebRedirect}
           setOneLinkURL={setOneLinkURL}
+          setShortLinkURL={setShortLinkURL}
+          setBrandedLinkURL={setBrandedLinkURL}
           qrCodeRef={qrCodeRef}
         />
         <QROutput 
           oneLinkURL={oneLinkURL} 
+          shortLinkURL={shortLinkURL}
+          brandedLinkURL={brandedLinkURL}
           qrCodeRef={qrCodeRef} 
         />
       </BodyWrapper>
